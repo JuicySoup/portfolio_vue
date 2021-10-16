@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', arial;
+  }
+
+ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+}
+a {
+    text-decoration: none;
+}
+img{width: 100%;}
+
+.nav-container {
+    background: #060609;
+
+    a {
+        color: white;
+    }
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+
+    ul{
+        display: flex;
+
+        a {
+            display: block;
+            padding: 0 1em;
+        }
+    }
+}
+
+.hero{
+    background: #060609;
+    color: white;
+    display: grid;
+    text-align: center;
+    padding: 4em;
+}
+.content > p{
+    color: #8F8F8F;
+}
+.content{
+    padding: 0em 2em;
+}
+
+.actionbuttons{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3em;
+
+    button{
+        background: transparent;
+        border: 1px solid #D4D4D4;
+        color: #D4D4D4;
+        padding: 0.7em 1.6em ;
+        text-transform: uppercase;
+        font-size: 18;
+
+    }
+}
+
+
+section{
+    padding: 4em 2em;
+    text-align: center;
+    margin-top: 5em;
+}
+
+.subtitle{
+    color: #FF6868;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: .2em;
+    font-size: .85em;
+}
+
+.portfolio-title{
+    font-weight: 600;
+    font-size: 1.3em;
+    margin-top: -.4em;
+    display: block;
+}
+
+.portfolio-grid{
+    margin-top: 5em;
+    a{
+        display: inline;
+        padding: .5em 0em;
+        color: #A7A7A7;
+        text-transform: uppercase;
+        font-size: 0.9em;
+    }
+}
+
+.portfolio-menu{
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    margin-bottom: 3em;
+}
+
+
+@media only screen and (min-width: 800px){
+
+    section, .hero{
+        text-align: left;
+    }
+
+    .actionbuttons{
+        display: block;
+    }
+    button{
+        margin-right: 3em;
+    }
+    header{
+        margin-left: 3em;
+    }
+
+    .portfolio-menu{
+        flex-direction: row;
+        justify-content: center;
+        a{
+            padding: 1em;
+        }
+    }
+    
+}
