@@ -1,0 +1,60 @@
+{
+    "projects": [
+        {
+            "id": 0,
+            "title": "Environment intro",
+            "category": "3D Animation",
+            "created": "Aug 2020",
+            "src": "Environment.png"
+        },
+        {
+            "id": 1,
+            "title": "Garen",
+            "category": "3D Render",
+            "created": "Aug 2021",
+            "src": "Garen.png"
+        },
+        {
+            "id": 2,
+            "title": "Hellfire",
+            "category": "3D Animation",
+            "created": "Oct 2021",
+            "src": "Hellfire_2k.png"
+        },
+        {
+            "id": 3,
+            "title": "Ashe",
+            "category": "3D Render",
+            "created": "Oct 2019",
+            "src": "Ashe.png"
+        },
+        {
+            "id": 4,
+            "title": "Xayah",
+            "category": "3D Render",
+            "created": "Jan 2019",
+            "src": "xayah.png"
+        },
+        {
+            "id": 5,
+            "title": "Xayah v2",
+            "category": "3D Render",
+            "created": "Mars 2019",
+            "src": "xayah_2.png"
+        },
+        {
+            "id": 6,
+            "title": "Minions",
+            "category": "3D Render",
+            "created": "April 2019",
+            "src": "winions.png"
+        },
+        {
+            "id": 7,
+            "title": "Retro",
+            "category": "3D Render",
+            "created": "June 2021",
+            "src": "retro_final.png"
+        }
+    ]
+}

@@ -4,7 +4,9 @@ body {
     height: 100vh;
     margin: 0;
     font-family: 'Poppins', arial;
+    background: #060609;
   }
+
 
 ul {
       list-style-type: none;
@@ -15,6 +17,20 @@ a {
     text-decoration: none;
 }
 img{width: 100%;}
+
+.error{
+    color: #ff3f80;
+    font-size: 14px;
+}
+.panelbuttons{
+    text-decoration: none;
+    background: #5ae4ca;
+    color:white;
+    font-weight: bold;
+    border: 0;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
 
 .nav-container {
     background: #060609;
@@ -44,7 +60,6 @@ header {
     color: white;
     display: grid;
     text-align: center;
-    padding: 4em;
 }
 .content > p{
     color: #8F8F8F;
@@ -84,6 +99,22 @@ section{
     font-size: .85em;
 }
 
+.portfolio-menu{
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    margin-bottom: 3em;
+}
+    
+.portfolio-items{
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 40px;
+    grid-column-gap: 20px;
+    width: 100%;
+}
+
 .portfolio-title{
     font-weight: 600;
     font-size: 1.3em;
@@ -92,22 +123,31 @@ section{
 }
 
 .portfolio-grid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1280px;
     margin-top: 5em;
-    a{
+    margin-left: auto;
+    margin-right: auto;
+    button{
         display: inline;
         padding: .5em 0em;
-        color: #A7A7A7;
+        color: #555;
         text-transform: uppercase;
         font-size: 0.9em;
+        background: none;
+        border: none;
+        cursor: pointer;
+        outline: none;
+    }
+
+    button.active{
+        color: #A7A7A7;
     }
 }
 
-.portfolio-menu{
-    display: flex;
-    text-align: left;
-    flex-direction: column;
-    margin-bottom: 3em;
-}
+
 
 
 @media only screen and (min-width: 800px){
@@ -127,11 +167,30 @@ section{
     }
 
     .portfolio-menu{
+        display: flex;
+        text-align: left;
         flex-direction: row;
-        justify-content: center;
-        a{
-            padding: 1em;
-        }
+        margin-bottom: 3em;
     }
     
+    .portfolio-items{
+        display: grid;
+        grid-auto-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-row-gap: 40px;
+        grid-column-gap: 40px;
+        width: 100%;
+
+    }
+    
+
+    @media only screen and (min-width: 1050px){
+        body{
+            max-width: 1920px;
+            margin: auto;
+        }
+
+
+    }
 }
