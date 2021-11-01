@@ -4,7 +4,6 @@
           <p>I am a .NET Developer student and self-taught 3D Artist from Sweden.</p>
           <div class="actionbuttons">
             <button class="portfolio-btn">View Portfolio</button>
-            <button class="skills-btn">My Skills</button>
           </div>
         </div>
         <section class="portfolio">
@@ -19,7 +18,7 @@
                 <div class="project-item">
                   <SingleProject :project="project"/>
                   </div>
-              </div>
+              </div> 
             </div>
           </div>
         </section>

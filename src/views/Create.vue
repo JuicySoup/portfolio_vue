@@ -1,11 +1,11 @@
 <template>
-  <ProjectForm/>
+  <UploadForm/>
 </template>
 
 <script>
-import ProjectForm from '../components/ProjectForm.vue'
+import UploadForm from '../components/UploadForm.vue'
 export default {
-    components:{ ProjectForm}
+    components:{ UploadForm}
 
 }
 </script>

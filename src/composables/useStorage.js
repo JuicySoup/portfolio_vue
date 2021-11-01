@@ -1,27 +1,34 @@
-import { ref } from 'vue'
+import { uploadBytes, getDownloadURL, ref} from '@firebase/storage'
 import { storage } from '../firebase/config'
 
-const useStorage = () => {
+
+const useStorage = (file) => {
     const error = ref(null)
     const url = ref(null)
-    const filePath = ref(null)
-
-    const uploadImage = async (file) => {
-        filePath.value = `renders/${file.name}`
-        const storageRef = storage.ref(filePath.value)
-
-        try{
-            const res = await storageRef.put(file)
-            url.value = res.ref.getDownloadURL()
-        } catch(err) {
-            console.log(err.message)
-            error.value = err.message
-        }
-    }
+    const progress = ref(null)
 
 
 
-    return { url, filePath, error, uploadImage}
+
+    const storageRef = ref(storage, ('images/' + file.name))
+
+    const uploadTask = uploadBytes(storageRef, file);
+
+    uploadTask.on('state_changed', 
+    (snapshot) => {
+        console.log(snapshot)
+    },
+    (err) => {
+        console.log(err.code)
+    },
+    () =>  {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log(downloadURL)
+        })
+        
+    })
+
+    return { url, error, progress}
 }
 
 
