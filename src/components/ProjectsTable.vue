@@ -40,17 +40,17 @@
                                     <tr>
                                         <th>Title</th>
                                         <th>Category</th>
-                                        <th>Date</th>
+                                        <th>Id</th>
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody v-if="projects.length">
+                                <tbody v-if="projects">
                                     <tr v-for="project in filteredProjects" :key="project.id" class="tr-shadow">
-                                        <td>{{project.title}}</td>
+                                        <td>{{project.title.title}}</td>
                                         <td>
-                                            <span class="block-email">{{project.category}}</span>
+                                            <span class="block-email">{{project.category.category}}</span>
                                         </td>
-                                        <td>{{project.created}}</td>
+                                        <td>{{project.id}}</td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
@@ -75,6 +75,7 @@
 
 <script>
 import { useRouter } from 'vue-router'
+import useCollection from "../composables/useCollection";
 
 export default {
     setup(){
@@ -92,21 +93,19 @@ export default {
     }
   },
   mounted(){
-    fetch('http://localhost:3000/projects')
-      .then(res => res.json())
-      .then(data => this.projects = data)
-      .catch(err => console.log(err.message))
+    const { documents } = useCollection("images");
+    this.projects = documents;
   },
   computed: {
     filteredProjects() {
       if (this.current === 'renders'){
-        return this.projects.filter(project => project.category === "3D Render")
+        return this.projects.filter(project => project.category.category === "3D Render")
       }
       if (this.current === 'animations'){
-        return this.projects.filter(project => project.category === "3D Animation")
+        return this.projects.filter(project => project.category .category=== "3D Animation")
       }
       if (this.current === 'videos'){
-        return this.projects.filter(project => project.category === "Video")
+        return this.projects.filter(project => project.category.category === "Video")
       }
       return this.projects
     }

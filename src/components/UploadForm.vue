@@ -96,7 +96,7 @@ export default {
     const file = ref(null)
     const fileError = ref(null)
      // allowed file types
-    const types = ['image/png', 'image/jpeg']
+    const types = ['image/png', 'image/jpeg', 'video/mp4']
     const handleChange = (e) => {
       let selected = e.target.files[0]
       console.log(selected)
@@ -105,7 +105,7 @@ export default {
         fileError.value = null
       } else {
         file.value = null
-        fileError.value = 'Please select an image file (png or jpg)'
+        fileError.value = 'Please select an acceptable file (png, jpeg, mp4)'
       }
     }
     return { file, fileError, handleChange }

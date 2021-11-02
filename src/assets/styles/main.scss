@@ -4,7 +4,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: 'Poppins', arial;
-    background: #060609;
+    background: #090607;
   }
 
 
@@ -33,39 +33,74 @@ img{width: 100%;}
 }
 
 .nav-container {
-    background: #060609;
+    background: #090607;
 
     a {
         color: white;
     }
+    max-width: 1400px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 0;
 }
 
 header {
     display: flex;
     justify-content: space-between;
-    padding: 2em;
+    padding: 2em 0em;
 
     ul{
         display: flex;
 
         a {
             display: block;
-            padding: 0 1em;
+            padding: 0 2em;
+            padding-left: 0;
         }
     }
 }
 
 .hero{
-    background: #060609;
+
     color: white;
     display: grid;
     text-align: center;
 }
-.content > p{
+
+.short-about{
+    max-width: 450px;
     color: #8F8F8F;
 }
+
+.bg-image{
+    background: no-repeat url("../Xayah_twitter.png");
+    background-size:cover;
+    height: 100%;
+    max-width: 100%;
+}
+
+.info-section{
+    width: 100%;
+    max-width: 1920px;
+    margin-right: auto;
+    margin-left: auto;
+    p{
+        color: #8F8F8F;
+    }
+}
+
+
 .content{
     padding: 0em 2em;
+    max-width: 1400px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    h1{
+        text-transform: uppercase;
+        font-size: 3em;
+    }
 }
 
 .actionbuttons{
@@ -82,13 +117,23 @@ header {
         font-size: 18;
 
     }
+    a{
+        text-decoration: none;
+        color: #D4D4D4;
+    }
 }
 
 
 section{
-    padding: 4em 2em;
+    padding: 4em 0em;
     text-align: center;
-    margin-top: 5em;
+    margin-bottom: 5em;
+}
+
+.content-bg{
+    background: rgb(10,6,7);
+    background: linear-gradient(56deg, rgba(10,6,7,1) 0%, rgba(10,6,7,1) 35%, rgba(17,0,0,1) 100%);
+    margin-top: 125px
 }
 
 .subtitle{
@@ -117,7 +162,7 @@ section{
 
 .portfolio-title{
     font-weight: 600;
-    font-size: 1.3em;
+    font-size: 2em;
     margin-top: -.4em;
     display: block;
 }
@@ -147,6 +192,20 @@ section{
     }
 }
 
+.centered{
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    .about-info{
+        text-align: center;
+        line-height: 40px;
+        color:#8F8F8F;
+    }
+}
+
 
 
 
@@ -159,11 +218,10 @@ section{
     .actionbuttons{
         display: block;
     }
-    button{
-        margin-right: 3em;
-    }
-    header{
-        margin-left: 3em;
+    .portfolio-grid{
+        button{
+            margin-right: 3em;
+        }
     }
 
     .portfolio-menu{
@@ -186,10 +244,6 @@ section{
     
 
     @media only screen and (min-width: 1050px){
-        body{
-            max-width: 1920px;
-            margin: auto;
-        }
 
 
     }

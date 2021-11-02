@@ -17,7 +17,6 @@ const useStorage = (file, title, category, description) => {
 
     uploadTask.on('state_changed', 
     (snapshot) => {
-        console.log("inside")
         console.log(snapshot);
     },
     (err) => {

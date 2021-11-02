@@ -21,7 +21,6 @@ const useCollection = (coll) => {
 
         documents.value = results
         error.value = null
-        console.log(documents.value)
     }, (err) => {
         console.log(err.message)
         documents.value = null

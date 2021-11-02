@@ -1,8 +1,9 @@
 <template>
     <div class="project">
-        <div class="project-image-wrap">
-            <img :src="project.url" class="image">
-        </div>
+        <router-link class="project-image-wrap" :to="{ name: 'ProjectDetails', params: { id: project.id}}">
+            <img v-if="project.url.includes('png') || project.url.includes('jpeg')" :src="project.url" class="image">
+            <video v-else :src="project.url" class="image" preload="none" :poster="project.poster"/>
+        </router-link>
         <div class="project-inner">
             <p class="date-text">{{project.created}}</p>
             <div class="project-text-wrap">
@@ -26,7 +27,7 @@ export default {
 
 <style>
     .image{
-        width: 100%;
+        height: 100%;
     }
     .project{
         position: relative;

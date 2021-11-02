@@ -4,6 +4,7 @@ import Login from '../views/Login.vue'
 import AdminPanel from '../views/AdminPanel.vue'
 import Create from '../views/Create.vue'
 import {auth} from '../firebase/config'
+import ProjectDetails from '../views/ProjectDetails.vue'
 
 // auth guard
 const requireAuth = (to, from, next) => {
@@ -39,6 +40,12 @@ const routes = [
     name: 'Create',
     component: Create,
     beforeEnter: requireAuth
+  },
+  {
+    path: '/project/:id',
+    name: 'ProjectDetails',
+    component: ProjectDetails,
+    props: true
   }
 ]
 
