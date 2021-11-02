@@ -1,34 +1,42 @@
-import { uploadBytes, getDownloadURL, ref} from '@firebase/storage'
-import { storage } from '../firebase/config'
+import { getDownloadURL, ref, uploadBytesResumable} from '@firebase/storage'
+import { storage, firestore } from '../firebase/config'
+import { serverTimestamp, addDoc, collection} from "firebase/firestore"; 
+import {ref as vref} from "@vue/reactivity";
+
+const useStorage = (file, title, category, description) => {
+    const url = vref(null);
+    const error = vref(null);
+    const progress = vref(null);
+
+    const storageRef = ref(storage, ('images/' + file.name));
+    const collectionRef = collection(firestore, 'images');
 
 
-const useStorage = (file) => {
-    const error = ref(null)
-    const url = ref(null)
-    const progress = ref(null)
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
-
-
-
-    const storageRef = ref(storage, ('images/' + file.name))
-
-    const uploadTask = uploadBytes(storageRef, file);
 
     uploadTask.on('state_changed', 
     (snapshot) => {
-        console.log(snapshot)
+        console.log("inside")
+        console.log(snapshot);
     },
     (err) => {
-        console.log(err.code)
+        error.value = err;
     },
-    () =>  {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log(downloadURL)
-        })
-        
-    })
+    async () =>  {
+        const dlUrl = await getDownloadURL(uploadTask.snapshot.ref)
+        const docRef = await addDoc(collectionRef, {
+            url: dlUrl,
+            timestamp: serverTimestamp(),
+            title: title,
+            category: category,
+            description: description
+        });
+        url.value = dlUrl;
+        console.log("Document written with ID: ", docRef.id);
+});
 
-    return { url, error, progress}
+    return { progress, url, error}
 }
 
 

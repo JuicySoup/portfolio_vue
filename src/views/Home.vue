@@ -12,51 +12,55 @@
             <h2 class="portfolio-title">Some of my work</h2>
           </div>
           <div class="portfolio-grid">
+
           <FilterNav @filterChange="current = $event" :current="current" />
-            <div v-if="projects.length" class="portfolio-items">
-              <div v-for="project in filteredProjects" :key="project.id">
-                <div class="project-item">
-                  <SingleProject :project="project"/>
-                  </div>
-              </div> 
-            </div>
+              <div v-if="projects" class="portfolio-items">
+                <div v-for="project in filteredProjects" :key="project.id">
+                  <div class="project-item">
+                    <SingleProject :project="project"/>
+                    </div>
+                </div>
+              </div>
           </div>
         </section>
 </template>
 
 <script>
+import useCollection from '../composables/useCollection'
 import FilterNav from '../components/FilterNav.vue'
 import SingleProject from '../components/SingleProject.vue'
+
+
 
 export default {
   name: 'Home',
   components: { SingleProject, FilterNav },
-  data() {
-    return {
-      projects: [],
-      current: "all"
-    }
+    data() {
+      return {
+        projects: [],
+        current: "all"
+      }
   },
   mounted(){
-    fetch('http://localhost:3000/projects')
-      .then(res => res.json())
-      .then(data => this.projects = data)
-      .catch(err => console.log(err.message))
+    const { documents } = useCollection('images')
+
+    this.projects = documents
+    console.log(this.projects)
   },
-  computed: {
+    computed: {
     filteredProjects() {
       if (this.current === 'renders'){
-        return this.projects.filter(project => project.category === "3D Render")
+        return this.projects.filter(project => project.category.category === "3D Render")
       }
       if (this.current === 'animations'){
-        return this.projects.filter(project => project.category === "3D Animation")
+        return this.projects.filter(project => project.category.category === "3D Animation")
       }
       if (this.current === 'videos'){
-        return this.projects.filter(project => project.category === "Video")
+        return this.projects.filter(project => project.category.category === "Video")
       }
       return this.projects
     }
   }
-
 }
+
 </script>

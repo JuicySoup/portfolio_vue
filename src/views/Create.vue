@@ -8,8 +8,5 @@ export default {
     components:{ UploadForm}
 
 }
-</script>
-
-<style>
-
-</style>
+</script>,
+    UploadForm

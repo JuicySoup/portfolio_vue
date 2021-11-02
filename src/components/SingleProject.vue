@@ -1,13 +1,13 @@
 <template>
     <div class="project">
         <div class="project-image-wrap">
-            <img :src="require(`@/assets/${project.src}`)" class="image">
+            <img :src="project.url" class="image">
         </div>
         <div class="project-inner">
             <p class="date-text">{{project.created}}</p>
             <div class="project-text-wrap">
-                <p>{{project.category}}</p>
-                <h3>{{project.title}}</h3>
+                <p>{{project.category.category}}</p>
+                <h3>{{project.title.title}}</h3>
             </div>
         </div>
     </div>

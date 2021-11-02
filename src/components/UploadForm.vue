@@ -21,14 +21,13 @@
                 id="text-input"
                 name="text-input"
                 class="form-control"
+                v-model="title"
               />
             </div>
           </div>
           <div class="row form-group">
             <div class="col col-md-3">
-              <label for="textarea-input" class="form-control-label"
-                >Project description</label
-              >
+              <label for="textarea-input" class="form-control-label">Project description</label >
             </div>
             <div class="col-12 col-md-9">
               <textarea
@@ -37,6 +36,7 @@
                 rows="9"
                 placeholder="Content..."
                 class="form-control"
+                v-model="desc"
               ></textarea>
             </div>
           </div>
@@ -45,11 +45,11 @@
               <label for="select" class="form-control-label">Category</label>
             </div>
             <div class="col-12 col-md-9">
-              <select name="select" id="select" class="form-control">
-                <option value="0">Please select</option>
-                <option value="1">3D Animation</option>
-                <option value="2">3D Render</option>
-                <option value="3">Video</option>
+              <select name="select" id="select" class="form-control" v-model="category">
+                <option>Please select</option>
+                <option>3D Animation</option>
+                <option>3D Render</option>
+                <option>Video</option>
               </select>
             </div>
           </div>
@@ -69,10 +69,10 @@
               <p v-if="file" class="form-control-label">{{ file.name }}</p>
               <p v-else>Drag your file here or click in this area.</p>
             </div>
-            <Progress v-if="file" :file="file"/>
+            <Progress v-if="file" :file="file" :title="{title}" :category="{category}" :description="{desc}"/>
             <div class="col col-md-3"></div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary btn-sm">
+              <button type="submit" class="btn btn-primary btn-sm" @click="startProgress=true">
                 <i class="fa fa-dot-circle-o"></i> Create
               </button>
               <button type="reset" class="btn btn-danger btn-sm">
@@ -92,30 +92,34 @@ import Progress from './Progress.vue'
 
 export default {
   components: { Progress },
-    setup() {
-        const file = ref(null);
-        const fileError = ref(null);
+  setup() {
+    const file = ref(null)
+    const fileError = ref(null)
+     // allowed file types
+    const types = ['image/png', 'image/jpeg']
+    const handleChange = (e) => {
+      let selected = e.target.files[0]
+      console.log(selected)
+      if (selected && types.includes(selected.type)) {
+        file.value = selected
+        fileError.value = null
+      } else {
+        file.value = null
+        fileError.value = 'Please select an image file (png or jpg)'
+      }
+    }
+    return { file, fileError, handleChange }
+  },
+  data() {
+    return {
+      title: '',
+      category: 'Please select',
+      desc: '',
+      startProgress: false
+    }
+  }
+}
 
-        // allowed file types
-
-        const types = ["image/png", "image/jpeg"];
-
-        const handleChange = (e) => {
-        let selected = e.target.files[0];
-        console.log(selected);
-
-        if (selected && types.includes(selected.type)) {
-            file.value = selected;
-            fileError.value = null;
-        } else {
-            file.value = null;
-            fileError.value = "Select an image file (png or jpeg)";
-        }
-        };
-
-        return { handleChange, file, fileError };
-    },
-};
 </script>
 
 <style >
