@@ -1,4 +1,6 @@
-# portfolio_vue
+# Video editing and 3D Generalist portfolio
+
+Personal project using firebase storage and firestore with a functional admin backend for CRUD functionality. Loads projects from firebase cloud. 
 
 ## Project setup
 ```
@@ -19,6 +21,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
